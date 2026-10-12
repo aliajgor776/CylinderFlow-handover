@@ -31,7 +31,10 @@ jobs:
       - name: Build static customer/admin preview
         run: pnpm build:static
       - name: Keep SPA routes working on Pages
-        run: cp dist/public/index.html dist/public/404.html
+        run: |
+          cp dist/public/index.html dist/public/404.html
+          mkdir -p dist/public/admin
+          cp dist/public/index.html dist/public/admin/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
